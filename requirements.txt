@@ -27,9 +27,6 @@ django-nvd3==0.9.7
 django-restframework==0.0.1
 django-simpleui==2022.7.29
 django-templated-mail==1.1.1
-djangorestframework==3.13.1
-djangorestframework-simplejwt==5.1.0
-djoser==2.1.0
 entrypoints==0.4
 executing==0.8.3
 filelock==3.4.0
