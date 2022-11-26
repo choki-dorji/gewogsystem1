@@ -1,0 +1,116 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+{% load static  %}
+
+
+
+    <!-- About Start -->
+    <div class="container-xxl py-3">
+        <div class="container">
+            <div class="row g-4 align-items-end">
+                <div  class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="mb-5" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Announcement</h1>
+                    <h5 class="mb-5" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">The More we Collaborate, Better the Quality</h5>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="row g-2">
+                        <div class="col-6 position-relative wow fadeIn" data-wow-delay="0.7s">
+                        </div>
+                        <div class="col-6 wow fadeIn" data-wow-delay="0.1s">
+                            <img class="img-fluid rounded" src={% static 'css/img/annouce.jpg' %}>
+                        </div>
+                        <div class="col-6 wow fadeIn" data-wow-delay="0.3s">
+                            <img class="img-fluid rounded" src={% static 'css/img/ann2.jpg' %}>
+                        </div>
+                        <div class="col-6 wow fadeIn" data-wow-delay="0.5s">
+                            <img class="img-fluid rounded" src={% static 'css/img/ann3.jpg' %}>
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+
+    <!-- Banner Start -->
+    <!-- <div class="container-fluid banner my-5 py-5" data-parallax="scroll" data-image-src={% static 'navbar2/img/national.jpg' %}>
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.3s">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm-4">
+                            <img class="img-fluid rounded" src={% static 'css/img/ann5.jpg' %} alt="">
+                        </div>
+                        <div class="col-sm-8">
+                            <h2 class="text-white mb-3" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Gewog Yargay Tshogchung</h2>
+                            <p class="text-white mb-4" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">The meeting is held on 3rd november, all the concerned authority are requested to come on time.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-sm-4">
+                            <img class="img-fluid rounded" src={% static 'css/img/ann6.jpg' %} alt="">
+                        </div>
+                        <div class="col-sm-8">
+                            <h2 class="text-white mb-3" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Local festival</h2>
+                            <p class="text-white mb-4" style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">All the mask dancer and singer are requested to practice the dances according to the given time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <!-- Banner End -->
+
+<!-- announcement list -->
+
+{% for i in annouce %}
+{% if forloop.counter|divisibleby:2  %}
+<div class="section-container">
+    <div class="columns content">
+       <div class="content-container">
+          <h5 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">{{i.Annoucement_title}}</h5>
+          <p style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+             {{i.Description}}
+          </p>
+          <p>More Information on : </p><i class="fa fa-file" style="margin-right: 1em;"></i>
+          <a href ="{{ i.attached_file.url }}" style="font-weight: bold;">Attached file</a>
+       </div>
+    </div>
+     
+     <div class="columns image" style="background-image:url({{i.image.url}})">
+        &nbsp;
+     </div>
+     {% else %}
+          
+<div class="section-container">
+    <div class="columns image" style="background-image:url({{i.image.url}})">
+        &nbsp;
+     </div>
+    <div class="columns content">
+       <div class="content-container">
+          <h5 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">{{i.Annoucement_title}}</h5>
+          <p style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+            {{i.Description}}
+          </p>
+          <p>More Information on : </p><i class="fa fa-file" style="margin-right: 1em;"></i>
+          <a href ="{{ i.attached_file.url }}" style="font-weight: bold;">Attached file</a>
+       </div>
+    </div>
+   
+</div>
+
+   {% endif %}
+
+
+
+{% endfor %}
+{% endblock %}
+

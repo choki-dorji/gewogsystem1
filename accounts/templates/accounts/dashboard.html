@@ -1,68 +1,182 @@
-{%  extends 'accounts/main.html' %}
+{%  extends 'accounts/main3.html' %}
 
 {% block content %}
 
-{%  include 'accounts/status.html' %}
+{% load static  %}
 
-<br>
+{% include 'accounts/message.html' %}
+    
+    
 
-<div class="row">
-	<div class="col-md-5">
-		<h5>CUSTOMERS:</h5>
-		<hr>
-		<div class="card card-body">
-			<a class="btn btn-primary  btn-sm btn-block" href="">Create Customer</a>
-			<table class="table table-sm">
-				<tr>
-					<th></th>
-					<th>Customer</th>
-					<th>Phone</th>
-				</tr>
+    <!-- Hero Banner -->
+    <div class="container-fluid px-0 mb-5">
+        <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="w-100" src={% static 'css/img/hero.png' %} alt="Image">
+                    <div class="carousel-caption">
+                        <div class="container">
+                            <div class="row justify-content-start">
+                                <div class="col-lg-8 text-start">
+                                    <h4 style="color:rgb(108, 23, 23); font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Gewog Management System</h4> <br>
+                                    <h1 style="color: rgb(9, 56, 41); font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Your Service,<br>Our Duty</h1><br>
+                                    <h6 style="color: rgb(9, 56, 41);  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Commited to people, commited to future</h6><br>
+                                    <a href="{% url 'exploremore' %}" class="btn btn-secondary" style="width: 100px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Explore</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    <!-- Hero banner End -->
+    <br> <br>
+    <!-- Chatbot -->
+    
 
-				{% for customer in customers %}
-					<tr>
-						<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">View</a></td>
-						<td>{{customer.name}}</td>
-						<td>{{customer.phone}}</td>
-					</tr>
-				{% endfor %}
+    
+   
+    
+    <!-- <iframe width="350" height="430" allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/fd6a3738-9a36-4d41-8e1c-a25db6708492"></iframe> -->
+<!--     
+    <div id="out">
+    <div id="time">
+        <div class="circle" style="--clr: #29f1ff;">
+            <div class="dots hr_dot"></div>
+            <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70" id="hh"></circle>
+            </svg>
+            <div id="hours">00</div>
+        </div>
+        <div class="circle" style="--clr: #2afe00;">
+            <div class="dots min_dot"></div>
+            <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70" id="mm"></circle>
+            </svg>
+            <div id="minutes">00</div>
+        </div>
+        <div class="circle" style="--clr: #ff4d00;">
+            <div class="dots sec_dot"></div>
+            <svg>
+                <circle cx="70" cy="70" r="70"></circle>
+                <circle cx="70" cy="70" r="70" id="ss"></circle>
+            </svg>
+            <div id="seconds">00</div>
+        </div>
+        <div class="ap">
+            <div id="am-pm">AM</div>
+        </div>
+    </div>
+</div> -->
 
-			</table>
+   
+    <!-- Service Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+                <h5 class="section-title bg-white text-center text-primary px-3" style="font-weight:bold;color:rgb(6, 89, 50); font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Services</h5><br><br><br>
+                <p>For users to fill in the child data users should be having marriage certificate, and for user to register for their marriage, both husband and wife should be resgisted to our system.</p>
+            </div>
+          
+            <div class="row gy-5 gx-4">
+                <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="service-item d-flex h-100">
+                        <div class="service-img">
+                            <img class="img-fluid" src={% static 'navbar2/img/personal.jpg' %} alt="">
+                        </div>
+                        <div class="service-text p-5 pt-0">
+                            <div class="service-icon">
+                                <img class="img-fluid rounded-circle" style="height:110px" src={% static 'navbar2/img/personal.jpg' %} alt="">
+                            </div>
+                            <h5 class="mb-3" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Record Personal Information</h4>
+                            <p class="mb-4">Record your personal informations.</p>
+                            <a class="btn btn-square rounded-circle" href="{% url 'login' %}"><i class="bi bi-chevron-double-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="service-item d-flex h-100">
+                        <div class="service-img">
+                            <img class="img-fluid" src={% static 'navbar2/img/child.jpg' %} alt="">
+                        </div>
+                        <div class="service-text p-5 pt-0">
+                            <div class="service-icon">
+                                <img class="img-fluid rounded-circle" style="height:110px" src={% static 'navbar2/img/child.jpg' %} alt="">
+                            </div>
+                            <h5 class="mb-3"style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Child Census Registration</h5>
+                            <p class="mb-4">Record the data of teh child.</p>
+                            <a class="btn btn-square rounded-circle" href="{% url 'login' %}"><i class="bi bi-chevron-double-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 pt-5 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="service-item d-flex h-100">
+                        <div class="service-img">
+                            <img class="img-fluid" src={% static 'navbar2/img/request.jpg' %} alt="">
+                        </div>
+                        <div class="service-text p-5 pt-0">
+                            <div class="service-icon">
+                                <img class="img-fluid rounded-circle" style="height:110px" src={% static 'navbar2/img/request.jpg' %} alt="">
+                            </div>
+                            <h5 class="mb-3" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Request Pass</h5>
+                            <p class="mb-4">Requesting with your strong reason</p>
+                            <a class="btn btn-square rounded-circle" href="{% url 'login' %}"><i class="bi bi-chevron-double-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Service End -->
+	 <!-- Team Start -->
+	 <div class="container-xxl py-5">
+		<div class="container">
+			<div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+				<h5 class="section-title bg-white text-center text-primary px-3" style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">About Us</h5> <br><br><br>
+			</div>
+			<div class="row g-4">
+				<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+					<div class="team-item rounded p-4">
+						<img class="img-fluid rounded mb-4" src={% static 'css/img/Gup.jpg' %} alt="">
+						<h5 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Rinchen Norbu</h5>
+						<p class="text-primary">Currently Serving as a Gup in Jurmey Gewog</p>
+						<div class="d-flex justify-content-center">
+							<a class="btn btn-square btn-outline-secondary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+							<a class="btn btn-square btn-outline-secondary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
+							<a class="btn btn-square btn-outline-secondary rounded-circle mx-1" href=""><i class="fab fa-telegram"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+					<div class="team-item rounded p-4">
+						<img class="img-fluid rounded mb-4" src={% static 'css/img/mangmi.jpg' %} alt="">
+						<h5 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Pema Tshewang</h5>
+						<p class="text-primary">Currently Serving as a mangmi in Jurmey Gewog</p>
+						<div class="d-flex justify-content-center">
+							<a class="btn btn-square btn-outline-secondary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+							<a class="btn btn-square btn-outline-secondary rounded-circle mx-1" href=""><i class="fab fa-telegram"></i></a>
+							<a class="btn btn-square btn-outline-secondary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+					<div class="team-item rounded p-4">
+						<img class="img-fluid rounded mb-4" src={% static 'css/img/Admin.jpg' %} alt="">
+						<h5 style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">Tshewang Dorji</h5>
+						<p class="text-primary">Currently Serving as a Admin in Jurmey Gewog</p>
+						<div class="d-flex justify-content-center">
+							<a class="btn btn-square btn-outline-secondary rounded-circle mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+							<a class="btn btn-square btn-outline-secondary rounded-circle mx-1" href=""><i class="fab fa-telegram"></i></a>
+							<a class="btn btn-square btn-outline-secondary rounded-circle mx-1" href=""><i class="fab fa-instagram"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-
-	<div class="col-md-7">
-		<h5>LAST 5 ORDERS</h5>
-		<hr>
-		<div class="card card-body">
-			
-			<table class="table table-sm">
-				<tr>
-					<th>Product</th>
-					<th>Date Orderd</th>
-					<th>Status</th>
-					<th>Update</th>
-					<th>Remove</th>
-				</tr>
-
-				{% for order in orders %}
-					<tr>
-						<td>{{order.product}}</td>
-						<td>{{order.date_created}}</td>
-						<td>{{order.status}}</td>
-						<td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Update</a></td>
-
-						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Delete</a></td>
-
-					</tr>
-				{% endfor %}
-
-		
-			</table>
-		</div>
-	</div>
-
-</div>
+	<!-- Team End -->
+    <!-- Back to Top -->
+   
 
 {% endblock %}
-

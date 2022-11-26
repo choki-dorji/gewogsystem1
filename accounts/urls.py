@@ -12,6 +12,14 @@ urlpatterns = [
     path('index/', views.index, name="index"),
     path('marriage/', views.marriage, name="marriage"),
 
+    path('explore/', views.explore, name="explore"),
+
+    path('exploremore/', views.exploremore, name="exploremore"),
+
+    path('annouce/', views.annouce, name="annouce"),
+
+    path('timeshow/', views.timeshow, name="timeshow"),
+
     # path('profile/', views.profile, name="profile"),
 
     path('profile/<user_id>', views.profile, name="profile"),

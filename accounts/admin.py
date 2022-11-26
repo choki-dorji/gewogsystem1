@@ -5,12 +5,6 @@ from django.conf import settings
 
 from .models import *
 
-# admin.site.register(Customer)
-# admin.site.register(Product)
-# admin.site.register(Tag)
-# admin.site.register(Order)
-# admin.site.register(UserData)
-
 @admin.register(UserData)
 class MaleUserDataAdmin(admin.ModelAdmin):
     list_display = ['CID','Name', 'email', 'Village', 'Chiwog', 'HouseHoldNo', 'contact_number', 'status']
@@ -23,7 +17,7 @@ class MaleUserDataAdmin(admin.ModelAdmin):
             print("Hello", obj.email)
             email1 = EmailMessage(
                 "Gewog Management System",
-                "Hello " + obj.Name + " You have successfully added your data to system.",
+                "Hello " + obj.Name + " we have berified your data,  You have successfully added your data to system.",
                 settings.EMAIL_HOST_USER,
                 [obj.email]
                 )
@@ -51,11 +45,11 @@ class MarriageUserDataAdmin(admin.ModelAdmin):
 
 @admin.register(Passdata)
 class PassDataAdmin(admin.ModelAdmin):
-    # list_display = []
-    # search_fields = ['YOUR_CId']
+    list_display = ['user', 'reason', 'request_date', 'status']
+    search_fields = ['user']
     actions = ['Accept', 'Reject']
     def Accept(self, request, queryset):
-        queryset.update(status='accepted')
+        queryset.update(status='Accepted')
         # for obj in queryset:
         #     print("Hello", obj.YOUR_CId.email)
         #     email1 = EmailMessage(
@@ -68,7 +62,7 @@ class PassDataAdmin(admin.ModelAdmin):
         #     email1.send()
 
     def Reject(self, request, queryset):
-        queryset.update(status='rejected')
+        queryset.update(status='Rejected')
         # for obj in queryset:
         #     # print("Hello", obj.YOUR_CId.email)
         #     email1 = EmailMessage(
@@ -81,3 +75,5 @@ class PassDataAdmin(admin.ModelAdmin):
         #     email1.send()
 
 admin.site.register(childdata)
+
+admin.site.register(Annoucement)

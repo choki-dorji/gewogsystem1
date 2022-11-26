@@ -34,6 +34,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_tools_stats',  # this must be BEFORE 'admin_tools' and 'django.contrib.admin'
+    'django_nvd3',
+    'simpleui',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'django_filters',
+    #  'jet_django',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +77,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'crm1.wsgi.application'
+
 
 
 # Database
@@ -138,7 +143,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'jurmeygewog123@gmail.com'
 EMAIL_HOST_PASSWORD = 'gzqdyswivtwgnqdv'
 
-
+JET_PROJECT = 'bumthap'
+JET_TOKEN = 'd310ffb2-95c6-4da4-826f-4e5fd5ae57b9'
 
 MESSAGE_TAGS = {
         messages.DEBUG: 'alert-secondary',

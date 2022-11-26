@@ -45,9 +45,9 @@ def PasswordSuccess(request):
 
 
 def loginPage(request):
-	if request.user.is_authenticated:
-		return redirect('index')
-	else:
+	# if request.user.is_authenticated:
+	# 	return redirect('index')
+	# else:
 		if request.method == 'POST':
 			username = request.POST.get('username')
 			password =request.POST.get('password')
@@ -65,9 +65,11 @@ def loginPage(request):
 		context = {}
 		return render(request, 'accounts/login.html', context)
 
+# #####################################################
+@login_required(login_url='login')
 def logoutUser(request):
 	logout(request)
-	return redirect('login')
+	return redirect('home')
 
 
 
@@ -104,8 +106,43 @@ def profile(request, user_id):
 	marriage = Marriage.objects.filter(status = True)
 	child = childdata.objects.all()
 
-	print(user_id)
+	# print(child)
+	# for i in child:
+	# 	for x in marriage:
+	# 		if i.user == x.Spousecid.user and x.user == request.user:
+	# 				print(i.childname)
+			
+
+		
 	
+	for x in marriage:
+		for i in child:
+				if i.user == x.Spousecid.user and x.user == request.user:
+					print(i.childname)
+					print("if", request.user)
+				elif request.user == i.user and request.user == x.Spousecid.user:
+						print(i.childname)
+				elif request.user == i.user and request.user == x.user:
+					print(i.childname)
+				elif i.user == x.user and request.user == x.Spousecid.user:
+					print(i.childname)
+				
+				
+		
+			
+
+	# for x in marriage:
+	# 	for i in child:
+	# 		if i.user == x.user:
+	# 			if i.user == request.user:
+	# 				print(i.childname, i.DOB)
+					# print(x.Spousecid.user, i.childname)
+
+				# elif i.user == x.Spousecid:
+				# 	print(i.childname, i.DOB)
+
+				
+					
 
 	if request.method == 'POST':
 		x= request.POST['name']
@@ -133,7 +170,8 @@ def profile(request, user_id):
 	)
 	
 	
-
+# #####################################################
+@login_required(login_url='login')
 def update(request, user_id):
 	# user = UserData.objects.get(pk=user_id)
 	if request.method == 'POST':
@@ -185,32 +223,43 @@ def Childdata(request):
 	if request.method == 'POST':
 		childname = request.POST.get('childname')
 		DOB = request.POST.get('DOB')
+		gender = request.POST.get('gender')
 		parent = request.POST.get('parent')
+		birth = request.FILES['certificate']
+
 		for i in marriage:
-			print(i.MarriageId)
+			print('marriage', i.MarriageId)
+			print('parent', parent)
 			if str(i.MarriageId) == str(parent):
 
-				data = childdata(
+				data1 = childdata(
 						user = request.user,
 						childname = childname,
 						DOB = DOB,
-						parentsid = i.MarriageId
+						Gender = gender,
+						parentsid = i.MarriageId,
+						birth_certificate = birth
 				)
+				data1.save()
+
+				
 
 				email1 = EmailMessage(
 						"Gewog Management System",
-						"Hello " + str(data.user) + " you have successfully posted the data of your child into our system. Please wait for few hours, we have to process your request. THANK YOU",
+						"Hello " + str(data1.user) + " you have successfully posted the data of your child into our system. Please wait for few hours, we have to process your request. THANK YOU",
 						settings.EMAIL_HOST_USER,
 						[request.user.email],)
 				email1.fail_silently = False
 				email1.send()
+				
+				
 				messages.success(request, 'You have successfully added child data')
-				data.save()
 				return redirect('index')
 
 			else:
 				messages.error(request, 'Your Marriage id was not in the database')
-				break
+				
+
 	return render(request, 'accounts/childdata.html')
 
 @login_required(login_url='login')
@@ -240,11 +289,32 @@ def passdata(request):
 
 	return render(request, 'accounts/pass.html')
 
+def exploremore(request):
+	return render(request, 'accounts/exploremore1.html')
 
+def timeshow(request):
+	return render(request, 'accounts/time.html')
 
 
 def main(request):
 	return render(request, 'accounts/main.html')
+
+
+
+# #####################################################
+@login_required(login_url='login')
+def annouce(request):
+	annouce = Annoucement.objects.all()
+	for i in annouce:
+		print(i.image.url)
+	return render(request, 'accounts/Annoucement.html', {'annouce': annouce})
+
+	
+
+# #####################################################
+@login_required(login_url='login')
+def explore(request):
+	return render(request, 'accounts/exploremore.html')
 
 # @login_required(login_url='login')
 # def marriage(request):
@@ -256,29 +326,29 @@ def main(request):
 
 
 
-####################################################################################
+##############################################################################################
 @login_required(login_url='login')
 def marriage(request):
 	marriages = Marriage.objects.filter(status=True)
 	userdata = UserData.objects.filter(status=True)
 
-	for x in userdata:
-		for i in marriages:
-			if i.user == request.user:
-				print("user "+ str(request.user))
-				print("dfhdfbbjsdhfvdhs")
+	# for x in userdata:
+	# 	for i in marriages:
+	# 		if i.user == request.user:
+	# 			print("user "+ str(request.user))
+	# 			print("dfhdfbbjsdhfvdhs")
 
 				
 
-				if i.Spousecid in userdata:
-					print("spouse " + str(i.Spousecid))
+	# 			if i.Spousecid in userdata:
+	# 				print("spouse " + str(i.Spousecid))
 
-					# print("me " + str(userdata.CID))
-				# elif i.user in userdata:
-				# 	print('elif', i.user)
-				# 	# print('elif', x.CID)
-			if i.user == x.user :
-				print("jjjjjjjjjsjhdjhs")
+	# 				# print("me " + str(userdata.CID))
+	# 			# elif i.user in userdata:
+	# 			# 	print('elif', i.user)
+	# 			# 	# print('elif', x.CID)
+	# 		if i.user == x.user :
+	# 			print("jjjjjjjjjsjhdjhs")
 
 
 	review_query = Marriage.objects.filter(user=request.user)
@@ -301,9 +371,12 @@ def marriage(request):
 		print(scid)
 		
 		
-		
 		for i in userdata:
-			if (str(i.CID) == scid and scid != ucid):
+			print('ur cid from i', i.CID)
+			print('ur cid', ucid)
+			print('spouce cid ', scid)
+
+			if (str(i.CID) == str(scid) and scid != ucid):
 				em = Marriage(
 				MarriageId= mid, 
 				user = review_user, 
@@ -311,43 +384,52 @@ def marriage(request):
 				your_cid = request.user.username,
 				MarriageCertificate = marriagecert
 				)
+				em.save()
 
 				email1 = EmailMessage(
 				"Gewog Management System",
-				"Hello "+ str(em.user) + "you have successfully added Your child Data in our system. Please wait for few hours, we have to process your details. THANK YOU",
+				"Hello "+ str(em.user) + "you have successfully added Your Marriage  Data in our system. Please wait for few hours, we have to process your details. THANK YOU",
 				settings.EMAIL_HOST_USER,
 				[review_user.email],)
 				email1.fail_silently = False
 				email1.send()
 
-				em.save()
+				
 				messages.info(request, 'You have successfully added your marriage data')
 				return redirect('index')
 
 
-			elif str(scid == ucid):
-				print(ucid)
+			elif (scid == ucid):
 				print(scid)
-				messages.info(request, 'You cannot have same CID as your spouse')
+				print(ucid)
+				messages.error(request, 'You cannot have same CID as your spouse')
 				break
+			# else:
+			# 	print(scid)
+			# 	print(ucid)
+			# 	messages.error(request, 'your the given cid of the spouse was invalid')
+			
+			
+				
 
 		# print(UserData.objects.all())
 		
 
 	return render(request, 'accounts/marriage.html', {'userdata': userdata,'marriages': marriages})
-############################################################################
+########################################################################################################
 def userProfile(request, pk):
 	profile = UserData.objects.get(CID = pk)
 	return render(request, 'accounts/userprofile.html', {'profile': profile})
 
 ###########################################################################################################
+# #####################################################
+@login_required(login_url='login')
 def search(request, pk):
 	if request.method == 'POST':
 		search = request.POST.get('search')
-		venue = UserData.objects.filter(Name__contains = search)
+		venue = UserData.objects.filter(Name__contains = search, status=True)
+		# child = childdata.objects.filter(Name_contains = search)
 		return render(request, 'accounts/search.html', {'search': search, 'venue': venue})
-
-	
 
 	return render(request, 'accounts/search.html', {})
 
@@ -412,7 +494,7 @@ def personal(request):
 				profile= upload, 
 				contact_number= phone, 
 			email = review_user.email)
-	
+			em.save()
 
 		
 
@@ -424,7 +506,7 @@ def personal(request):
 					[em.email],)
 			email1.fail_silently = False
 			email1.send()
-			em.save()
+			
 
 			if(marriage == 'Yes'):
 				messages.success(request, 'You have successfully added data')

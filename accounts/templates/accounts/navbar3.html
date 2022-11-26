@@ -1,0 +1,95 @@
+{% load static %}
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
+    </div>
+    <!-- Spinner end -->
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5">
+        <a href="{% url 'login' %}" class="navbar-brand d-flex align-items-center">
+            <div>
+                <img style="max-width: 21; height: 48px; margin-left: 25px;"src={% static 'navbar2/img/logo1.png' %}  alt="Image">
+            </div>
+            <!-- <h1 class="m-0">Milky</h1> -->
+        </a>
+        <button type="button" class="navbar-toggler me-0" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="http://127.0.0.1:8000/login/" class="nav-item nav-link active" style="font-family: Roboto; font-weight: 400; color: black;"><strong>Login</strong></a>
+                <a href="{% url 'register' %}" class="nav-item nav-link" style="font-family: Roboto; font-weight: 400; color: black;"><strong>Register</strong></a>
+                
+                 <!-- search bar start-->
+                 <!-- <div class="SearchBox" style="margin-top: 24px;"> -->
+                  
+                    <!-- <input type="search" class="SearchBox-input" placeholder="Search..." name="search">
+                        <button class="SearchBox-button" type="submit">
+                            <i class="SearchBox-icon  material-icons">search</i>
+                        </button> -->
+
+                    <!-- <div class="search__container">
+                      <form method="post" action="{% url 'search' user.id %}"> 
+                    {% csrf_token %}
+                          <input class="search__input" type="search" placeholder="Search" name="search" style="height:35px; margin-top: 5px;">
+                          
+                    </div>
+                  </form> -->
+                  <!-- </div> -->
+
+                        <!-- <div class="containeer">
+
+                          <div class="row height d-flex justify-content-center align-items-center">
+                            <div class="col-md-8">
+      
+                              <div class="search">
+                                <i class="fa fa-search"></i>
+                                <input type="text" class="form-control" placeholder="Have a question? Ask Now">
+                                <button class="btn btn-primary">Search</button>
+                              </div>
+                              
+                            </div>
+                            
+                          </div>
+                      </div>
+                  </form>
+                    
+                </div> -->
+
+                
+              
+                <!-- search bar end -->
+                
+                <!-- drop down menu start-->
+               
+                <!-- <div class="dropdown" style="margin-left: 30px">
+                  
+                    <img class="dropbtn" id="drop" src={% static "images/jur.png" %} alt="image" style="width: 30px; height :30px; margin-top: 24px; border-radius: 50%;"/>
+                   
+                    <div id="myDropdown" class="dropdown-content" style="margin-top: 40px; width: 200px; margin-top: 30px; margin-left: -5.5rem;">
+                      <div>
+                        <a href="{% url 'profile'  user.id %}"><i class="fa fa-user" style="padding-left: 10px; margin-right: 1em;"></i>User Profile</a>
+                      </div>
+
+                      <div>
+                        <a href="{% url 'passview' %}"><i class="fa fa-check" style="padding-left: 10px; margin-right: 1em;"></i>Pass</a>
+                      </div>
+
+                      <div>
+                        <a href="{% url 'password-change' %}"><i class="fa fa-cog" style="padding-left: 10px; margin-right: 1em;"></i>Change Password</a>
+                      </div>
+
+                      <div>
+                        <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt" style="padding-left: 10px; margin-right: 1em;"></i>Logout</a>
+                      </div>
+
+
+                    </div>
+                    
+                </div> -->
+                <!-- drop down end -->
+              </div>
+        </div>
+    </nav>
+ 

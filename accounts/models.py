@@ -99,30 +99,42 @@ class Marriage(models.Model):
 
 
 class Passdata(models.Model):
+	gen = [
+        ('Accepted', 'Accepted'),
+        ('Pending', 'Pending'),
+		('Rejected', 'Rejected'),
+        ]
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	reason = models.CharField(max_length=100)
 	request_date = models.DateTimeField(auto_now_add=True)
-	status = models.CharField(max_length=100, default="pending")
+	status = models.CharField(max_length=100, choices = gen, default="Pending")
 
 	def __str__(self):
 		return str(self.user)
 
 class childdata(models.Model):
+	gen = [
+        ('Male', 'Male'),
+        ('Female', 'Female')
+        ]
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	childname= models.CharField(max_length=100)
 	DOB = models.DateField()
-	Gender = models.CharField(max_length=100)
+	Gender = models.CharField(max_length=100, choices = gen)
 	request_date = models.DateTimeField(auto_now_add=True)
+	birth_certificate = models.FileField(upload_to='childdata', null=True, blank=True)
 	parentsid = models.IntegerField()
 
 	def __str__(self):
 		return str(self.user)
 
 
+class Annoucement(models.Model):
+	Annoucement_title= models.CharField(max_length=100)
+	image = models.ImageField(upload_to='tender', null= True, blank=True)
+	Description = models.TextField()
+	attached_file = models.FileField(upload_to='tender', null=True)
+	put_date = models.DateTimeField(auto_now_add=True)
 
-
-
-
-
-
-
+	def __str__(self):
+		return self.Annoucement_title

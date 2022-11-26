@@ -4,28 +4,6 @@
 
 {% load static  %}
 
-<!-- <!DOCTYPE html> -->
-<!-- {% load static %}
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href={% static 'css/img/favicon.ico' %} rel="icon">
-    <title>personal information register</title>
-    <link rel="stylesheet" href={% static 'css/assets/bootstrap/css/bootstrap.min.css' %} />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-    />
-    <link rel="stylesheet" href={% static 'css/assets/fonts/fontawesome-all.min.css' %} />
-    <link rel="stylesheet" href={% static 'css/assets/css/untitled.css' %} />
-
-
-    
-
-</head> -->
 <div class="bg-gradient-primary">
  
     <div class="container">
@@ -90,7 +68,7 @@
                     <input class="form-control" type="file" name="ProfilePhoto" required/>
 
                     <label>Phone Number</label>
-                    <input class="form-control" type="integer" name="phone" required/>
+                    <input class="form-control" type="integer" name="phone" pattern="([1]{1}[7]{1}[0-9]{6}|[7]{1}[7]{1}[0-9]{6})" required/>
 
                     <div style="margin-top: 9px; margin-left: 1px">
                       <label>Marital status</label> <br />
@@ -101,62 +79,15 @@
                     </div>
   
 
-                    <!-- <label>Phone Number<input
-                        class="form-control"
-                        type="text"
-                        id="phone"
-                        style="width: 200px; margin-top: 10px"
-                        name="phone"
-                    /></label>
-
-                    <label style="height: 24px; margin-left: 3.6rem"
-                      >Marital Status</label>
-                    <div
-                      class="form-check"
-                      style="
-                        height: 30px;
-                        margin-top: 2.4rem;
-                        margin-left: -6.5rem;
-                      "
-                    >
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        id="formCheck-2"
-                        value="yes"
-                        name="marriage"
-                      />
-
-                      <label class="form-check-label" for="formCheck-2"
-                        >Yes</label
-                      >
-                    </div>
-
-                    <div
-                      class="form-check"
-                      style="
-                        height: 24px;
-                        margin-top: 2.5rem;
-                        margin-left: 1rem;
-                      "
-                    >
-                      <input
-                        class="form-check-input"
-                        type="radio"
-                        id="formCheck-1"
-                        value="no"
-                        name="marriage"
-                      />
-                      <label class="form-check-label" for="formCheck-1"
-                        >No</label
-                      >
-                    </div>
-                  </div> -->
-
+                 
                   <hr />
                  
                   <input class="btn btn-primary btn-block text-white Login" style="margin-top: 20px; background-color: #09463f" type="submit" name = "Submit" />
-                  <hr />
+               
+                  <a class="btn btn-primary btn-block text-dark Login" style="margin-top: 20px; background-color: #cdd6d5;" href="{% url 'marriage' %}">Already added Data?</a>
+                  <!-- <a class="btn btn-primary btn-block text-dark Login" style="margin-top:20px; background-color: #cdd6d5;"
+                    role="button"
+                    >Submit</a> -->
                 </form>
                 <div class="text-center"></div>
                 <div class="text-center"></div>
@@ -167,17 +98,15 @@
       </div>
     </div>
     
- <!-- <script type="module" src="https://unpkg.com/ionicons@5.5/dist/ionicons.esm.js"></script>
-   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-   <script src={% static 'css/assets/js/jquery.min.js' %}></script>
-    <script src={% static 'css/assets/bootstrap/js/bootstrap.min.js' %}></script> -->
+
 
 
    
   
  </div>
  
-<!-- </html> -->
+
 {% endblock %}
+
 
 

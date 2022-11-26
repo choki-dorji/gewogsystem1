@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+{%  extends 'accounts/main2.html' %}
+
+{% block content %}
+
+{% load static  %}
+
+
+<!-- <!DOCTYPE html>
 {% load static %}
 <html>
   <head>
@@ -15,7 +22,7 @@
     />
     <link rel="stylesheet" href={% static 'css/assets/fonts/fontawesome-all.min.css' %} />
     <link rel="stylesheet" href={% static 'css/assets/css/untitled.css' %} />
-  </head>
+  </head> -->
 
   <body class="bg-gradient-primary">
     <div class="container">
@@ -46,7 +53,7 @@
             </div>
             <div class="col-lg-7">
               <div class="p-5">
-                <form class="user" method="POST" action="">
+                <form class="user" method="POST" action="" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% include 'accounts/message.html' %}
                   <div class="form-group row">
@@ -55,9 +62,10 @@
                   </div>
                   <div style="margin-top: 9px; margin-left: 1px">
                     <label>Gender</label> <br />
-                    <input type="radio" id="html" name="marriage" value="Male" />
+
+                    <input type="radio" id="html" name="gender" value="Male" />
                     <label for="html">Male</label>
-                    <input type="radio" id="css" name="marriage" value="Female" style="margin-left: 3rem" />
+                    <input type="radio" id="css" name="gender" value="Female" style="margin-left: 3rem" />
                     <label for="css">Female</label>
                   </div><br>
 
@@ -69,13 +77,11 @@
                     <label>Parents Marriage ID</label>
                     <input class="form-control" type="number" name="parent" required/>
                   </div>
-                  <!-- <a
-                    class="btn btn-primary btn-block text-white Login"
-                    href="marriage.html"
-                    style="margin-top: 20px; background-color: #09463f"
-                    role="button"
-                    >Next To</a
-                  > -->
+
+                  <label>Birth Certificate</label>
+                    <input class="form-control" type="file" name="certificate" required/>
+                  </div>
+                 
                   <input type="submit" class="btn btn-primary btn-block text-white Login" style="margin-top: 20px; background-color: #09463f">
                   <hr />
                 </form>
@@ -87,9 +93,10 @@
         </div>
       </div>
     </div>
-    <script src={% static 'css/assets/js/jquery.min.js' %}></script>
+    <!-- <script src={% static 'css/assets/js/jquery.min.js' %}></script>
     <script src={% static 'css/assets/bootstrap/js/bootstrap.min.js' %}></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src={% static 'css/assets/js/theme.js' %}></script>
   </body>
-</html>
+</html> -->
+{% endblock %}

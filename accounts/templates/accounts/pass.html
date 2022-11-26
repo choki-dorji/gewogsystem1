@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+{%  extends 'accounts/main2.html' %}
+
+{% block content %}
+
+{% load static  %}
+
+<!-- <!DOCTYPE html>
 {% load static %}
 <html>
   <head>
@@ -19,11 +25,11 @@
 
     <link rel="stylesheet" href={% static 'css/assets/css/untitled.css' %} />
 
-  </head>
+  </head> -->
 
   <body class="bg-gradient-primary">
     <div class="container">
-      <h4 style="margin-top: 30px;">
+      <h4 style="margin-top: 30px; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
         
        &nbsp;<strong>Register Pass</strong>
      </h4>
@@ -52,21 +58,22 @@
 
                    
 
-                    <label style= "width: 100%">Reason for the pass<br>
-                    <select style = "margin-top: 45px; height: 2rem; width: 100%;" name="option" class="form-control" >
+                    <label style = "width: 100%">Reason for the pass<br>
+                    <select style = "margin-top: 45px; height: 2.4rem; width: 100%;" name="option" class="form-control" >
                         <option value="House contruction" class="form-control" name="option">For Construction of house</option>
                         <option value="Fire Wood" class="form-control" name="option">For Fire wood</option>
                         <option value="Timber" class="form-control" name="option">For Timber</option>
                         <option value="sand and stone" class="form-control" name="option">For sand and stone</option>
                       </select>
-                      </label>
+                    </label>
 
                   <!-- <a class="btn btn-primary btn-block text-white Login" style="margin-top:20px; background-color: #09463F;"
                     role="button"
                     >Submit</a> -->
                     <input class="btn btn-primary btn-block text-white Login" style="margin-top:20px; background-color: #09463F;" type="submit" value="Submit">
-                  <hr />
+                
                 </form>
+                <!-- <hr /> -->
                 <div class="text-center"></div>
                 <div class="text-center"></div>
               </div>
@@ -76,11 +83,13 @@
       </div>
     </div>
 
-    <script src={% static 'css/assets/js/jquery.min.js' %}></script>
+    <!-- <script src={% static 'css/assets/js/jquery.min.js' %}></script>
     <script src={% static 'css/assets/bootstrap/js/bootstrap.min.js' %}></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src={% static 'css/assets/js/theme.js' %}></script>
 
   </body>
-</html>
+</html> -->
+
+{% endblock %}
 
