@@ -525,7 +525,7 @@ def personal(request):
 
 
 def home(request):
-	return render(request, 'accounts/dashboard.html', context)
+	return render(request, 'accounts/dashboard.html')
 
 def delete(request):
 	return render(request, 'accounts/message.html')
