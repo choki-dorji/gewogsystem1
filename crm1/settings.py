@@ -140,8 +140,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'jurmeygewog123@gmail.com'
-EMAIL_HOST_PASSWORD = 'gzqdyswivtwgnqdv'
+EMAIL_HOST_USER = 'jurmeygweog321@gmail.com'
+EMAIL_HOST_PASSWORD = 'hnqlbyujgebywfya'
 
 JET_PROJECT = 'bumthap'
 JET_TOKEN = 'd310ffb2-95c6-4da4-826f-4e5fd5ae57b9'
