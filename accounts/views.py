@@ -271,6 +271,7 @@ def passdata(request):
 		user = review_user,
 		reason = reason
 		)
+		em.save()
 		email1 = EmailMessage(
             "Gewog Management System",
             "Hello " + str(em.user) + " you have successfully request your pass with our system. Please wait for few hours, we have to process your request. THANK YOU",
@@ -278,7 +279,7 @@ def passdata(request):
             [review_user.email],)
 		email1.fail_silently = False
 		email1.send()
-		em.save()
+		
 
 		messages.success(request, 'You have successfully request for the pass')
 	
